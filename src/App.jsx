@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Analytics } from "@vercel/analytics/react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const API_URL = "/api/quotes";
 
@@ -126,6 +128,9 @@ const App = () => {
     <div>
       <div className="flex justify-left mb-4">
         <img src="/favicon.ico" alt="Logo" className="h-16 w-16" />
+        <a href="https://github.com/wes-brook/Aura" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faGithub} className="pl-4 text-7xl text-gray-800 hover:text-gray-600 transition duration-300" />
+        </a>
       </div>
       <Header heading="Quote of the day" />
       {quotes.length > 0 && (
