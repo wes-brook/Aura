@@ -83,7 +83,7 @@ const App = () => {
     fetchQuotes();
     window.pollingInterval = setInterval(() => {
       fetchQuotes();
-    }, 5000); // Poll every 5 seconds
+    }, 10000); // Poll every 10 seconds
   };
 
   const stopPolling = () => {
