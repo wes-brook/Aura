@@ -127,7 +127,9 @@ const App = () => {
   return (
     <div>
       <div className="flex justify-left mb-4">
-        <img src="/favicon.ico" alt="Logo" className="h-16 w-16" />
+        <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank' rel="noopener noreferrer">
+          <img src="/favicon.ico" alt="Logo" className="h-16 w-16" />
+        </a>
         <a href="https://github.com/wes-brook/Aura" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faGithub} className="pl-4 text-7xl text-gray-800 hover:text-gray-600 transition duration-300" />
         </a>
