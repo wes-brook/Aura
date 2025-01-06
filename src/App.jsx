@@ -26,11 +26,18 @@ const TopQuote = props => {
     );
   }
 
-  const topLiked = props.quotes.reduce((max, quote) => quote.likes > max.likes ? quote : max, props.quotes[0]);
+  const topLikedQuotes = props.quotes
+    .sort((a, b) => b.likes - a.likes)
+    .slice(0, 5)
 
   return (
     <>
-      <Display content={topLiked.content} likes={topLiked.likes} />
+      {topLikedQuotes.map((quote, index) => (
+        <div key={quote._id} className="flex items-start space-x-2">
+          <span className="text-lg font-bold">{index + 1}.</span>
+          <Display content={quote.content} likes={quote.likes} />
+        </div>
+      ))}
     </>
   );
 };
@@ -97,7 +104,11 @@ const App = () => {
   }
 
   const randomSelection = () => {
-    let randomInt = Math.floor(Math.random() * quotes.length)
+    stopPolling()
+    let randomInt
+    do {
+      randomInt = Math.floor(Math.random() * quotes.length)
+    } while (randomInt === selected)
     setSelected(randomInt)
   }
 
@@ -113,6 +124,9 @@ const App = () => {
 
   return (
     <div>
+      <div className="flex justify-left mb-4">
+        <img src="/favicon.ico" alt="Logo" className="h-16 w-16" />
+      </div>
       <Header heading="Quote of the day" />
       {quotes.length > 0 && (
         <Display content={quotes[selected].content} likes={quotes[selected].likes} />
